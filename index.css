@@ -1,0 +1,106 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: -10px;
+    width: 100vw;
+    height: 100vh;
+    background-color:gainsboro;
+    font-size: 18px;
+    overflow: hidden;
+}
+.container {
+    width: 100vw;
+    height: 500px;
+    background: rgb(255,69,0);
+    background: linear-gradient(120deg, rgba(220,220,220,1) 47%, rgba(255,69,0,1) 47%);
+    margin-top: 5%;
+}
+.header {
+    position: relative;
+    top: 15px;
+    width: 100vw;
+    background: #cfc45cc2;
+}
+.nome{
+    padding: 10px;
+    padding-left: 40px;
+    width: 100vw;
+    font-weight: bold;
+    float: left;
+    background: #cfc45cc2;
+}
+.tipo{
+    padding: 10px;
+    position: relative;
+    top: -45px;
+    font-weight: bold;
+    background: rgb(44, 41, 41);
+    width: 48vw;
+    float: right;
+    color: white;
+    text-align: center;
+    background: linear-gradient(120deg, #cfc45c4b 9%, rgba(44,41,41,1) 5%);
+}
+.footer{
+    width: 100vw;
+    height: 30px;
+    background-color: black;
+}
+@media screen and (max-width: 768px) {
+    .tipo{
+        width: 37.5vw;
+    }
+}
+#img{
+    margin: 100px;
+    width: 300px;
+    height: 250px;
+}
+.arrows{
+    position: absolute;
+    margin-left: 40%;
+    width: 100vw;
+    top: 1%;
+}
+.arrow{
+    width: 45px;
+    padding: 10px;
+}
+.arrow:last-child{
+    margin-left: 15%;
+}
+.arrow:active{
+    transform: scale(.4);
+}
+.arrow:hover{
+    border-radius: 40%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.192);
+}
+.item-status img{
+    width: 25px;
+    position: relative;
+    float: right;
+    margin-left: 10%;
+}
+.status{
+    font-weight: bold;
+    display: block;
+    position: relative;
+    float: right;
+    width: 40%;
+    top: -420px;
+}
+.status p{
+    color: white;
+    text-align: start;
+    padding: 10px;
+    padding-left: 30px;
+    background-color: rgba(255, 255, 255, 0.479);
+    background: linear-gradient(120deg, rgba(44,41,41,1) 79%, #cfc45c4b 79%); 
+    border-radius: 25px;
+    width: 300px;   
+}
+.velocidade, .vida, .ataque, .defesa, .sa, .sd{
+    float: right;
+    padding-right: 70px;
+}

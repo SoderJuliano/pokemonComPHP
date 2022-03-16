@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const num = 1;
+
+        var numbers = [[-1, 2], [4, 100], [10, -10], [9, -10]];
+        var doubles = numbers.map(function(num) {
+            return num[0] + num[1];
+        });
+        //doubles.sort(sortfunction);
+        console.log(doubles);/* 
+        function sortfunction(a, b){
+            return (a - b) 
+        }  */
+        let posicao;
+        for(var i=0; i<doubles.length; i++) {
+            let x1 = num - doubles[i]
+            let x2 = num - doubles[i+1] ? doubles[i+1] : 0
+            console.log(x1, x2);
+            let diferenca =  x1 > x2 ?  i++ : i;
+            posicao = diferenca 
+
+            console.log(posicao)
+        }
+        console.log("the position is "+(posicao))
+        //numbers.sort(sortfunction);
+        console.log(numbers[posicao]);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+  /* $.post("demo_test_post.asp",
+  {
+    name: "Donald Duck",
+    city: "Duckburg"
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  }); */
+/* const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = this.responseText;
+  document.getElementById("demo").innerHTML = myObj;
+}
+xmlhttp.open("GET", "http://soder.free.000webhosting.uk/?id=1");
+xmlhttp.send(); */
