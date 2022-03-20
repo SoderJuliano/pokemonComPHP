@@ -72,8 +72,9 @@ body{
         width: 37.5vw;
     }
     .status{
-        top: 100px !important;
-        left: 5px;
+        position: relative;
+        top: 110px !important;
+        left: 15px;
     }
     .arrows{
         padding-top: 20px !important;
