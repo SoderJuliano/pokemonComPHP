@@ -1,10 +1,24 @@
+<?php
+   include 'create_tables.php';
+	include 'routers.php';
+	include 'cors.php';
+?>
+   
+<?php 
+  //<a href="?listAll">List All</a>
+   /* if (isset($_GET['listAll'])) {
+      allPokes($lista);
+   } */
+	/* if (isset($_GET['id'])) {
+      getPokeByID($_GET['id']);
+   } */
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <title>Pokedex</title>
     <script src="./node_modules/jquery/dist/jquery.js" ></script>
     <link rel="stylesheet" href="index.css">
@@ -32,21 +46,11 @@
   </div>
   <div class="footer"></div>
 <script>
+  let conn = false;
   // A $( document ).ready() block.
 $( document ).ready(function() {
   let id = 1;
-  console.log( "ready!" );
-  istrue = false;
   getPokemon(id);
-  checkinterval = setInterval(() => {
-    getPokemon(id);
-  }, 800);
-  setInterval(() => {
-    istrue = getFirstData();
-    if(istrue) {
-      clearInterval(checkinterval);
-    }
-  }, 800)
 
   $("#esquerdo").click(function() {
     id = id-1;
@@ -55,10 +59,11 @@ $( document ).ready(function() {
   $("#direito").click(function() {
     id = id+1;
     getPokemon(id);
+    
   });
   function getPokemon(id){
-    $.get("https://soder.free.000webhosting.uk/?id="+id, function(data, status){
-      $(".nome").text(JSON.parse(data).nome+" #"+JSON.parse(data).id);
+      $data = getPokeByID(id)
+      $(".nome").text(JSON.parse(data).nome+" #"+JSON.parse($data).id);
       $(".tipo").text(JSON.parse(data).tipo);
       $(".vida").text(JSON.parse(data).hp);
       $(".ataque").text(JSON.parse(data).atk);
@@ -71,18 +76,8 @@ $( document ).ready(function() {
       $("#img").attr("src", "./pokemons/"+JSON.parse(data).id+".webp")
       : $("#img").attr("src", "./pokemons/"+JSON.parse(data).id+".png"); 
       
-    
-      console.log("Data: " + data + "\nStatus: " + status);
-    });
-  }
-});
-
-function getFirstData(){
-  if($(".nome").text()=="nome"){
-    return false;
-  }
-  return true;
-}
+   }
   </script>    
 </body>
 </html>
+?>

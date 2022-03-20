@@ -45,13 +45,46 @@ body{
     height: 30px;
     background-color: black;
 }
+@media screen and (min-width:500px) and (max-width:768px) {
+    .status {
+        position: relative;
+        left: 10% !important;
+        top: 100px !important;
+    }
+    .arrows{
+        position: relative !important;
+    }
+    
+}
+@media screen and (min-width: 769px) {
+    .status {
+        position: relative;
+        float: right;
+        right: 12%;
+        top: -420px;    
+    }
+    #img{
+        margin: 100px;
+    }
+}
 @media screen and (max-width: 768px) {
     .tipo{
         width: 37.5vw;
     }
+    .status{
+        top: 0px;
+        left: 5px;
+    }
+    .arrows{
+        padding-top: 20px !important;
+        position: relative !important;
+        margin-left: 30% !important;
+    }
+    #img{
+        margin: 30px;
+    }
 }
 #img{
-    margin: 100px;
     width: 300px;
     height: 250px;
 }
@@ -82,20 +115,12 @@ body{
     float: right;
     margin-left: 10%;
 }
-.status{
-    font-weight: bold;
-    display: block;
-    position: relative;
-    float: right;
-    width: 40%;
-    top: -420px;
-}
 .status p{
     color: white;
     text-align: start;
     padding: 10px;
     padding-left: 30px;
-    background-color: rgba(255, 255, 255, 0.479);
+    background-color: rgba(255, 255255, 0.479);
     background: linear-gradient(120deg, rgba(44,41,41,1) 79%, #cfc45c4b 79%); 
     border-radius: 25px;
     width: 300px;   
