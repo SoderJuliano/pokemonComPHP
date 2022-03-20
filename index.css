@@ -72,7 +72,7 @@ body{
         width: 37.5vw;
     }
     .status{
-        top: 0px;
+        top: 100px !important;
         left: 5px;
     }
     .arrows{
