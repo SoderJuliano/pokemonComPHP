@@ -58,10 +58,10 @@ body{
 }
 @media screen and (min-width: 769px) {
     .status {
-        position: relative;
+        position: absolute;
         float: right;
         right: 12%;
-        top: -420px;    
+        top: 150px;    
     }
     #img{
         margin: 100px;
