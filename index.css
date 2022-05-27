@@ -93,11 +93,15 @@ body{
     position: absolute;
     margin-left: 40%;
     width: 100vw;
-    top: 1%;
+    top: 0.2%;
+    z-index: 10;
 }
 .arrow{
     width: 45px;
     padding: 10px;
+    background-color: rgba(245, 245, 245, 0.507);
+    border-radius: 25px;
+    z-index: 10;
 }
 .arrow:last-child{
     margin-left: 15%;
@@ -129,4 +133,30 @@ body{
 .velocidade, .vida, .ataque, .defesa, .sa, .sd{
     float: right;
     padding-right: 70px;
+}
+.loading{
+    position: absolute;
+    display: flex;
+    z-index: 10;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(169, 169, 169, 0.438);
+}
+.loading img{
+    width: 100px;
+    height: 100px;
+    margin: auto auto;
+}
+.advanced{
+    position: absolute;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    left: 10%;
+    top: 10%;
+    text-decoration: none;
+}
+.advanced:hover{
+    background-color: yellow;
 }

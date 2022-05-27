@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
-    <title>Pokedex</title>
-    <script src="./node_modules/jquery/dist/jquery.js" ></script>
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-    </head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>Pokedex</title>
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
 <body>
+  <div class="loading"> <img src="./icons/loading.gif"></img></div>
+
   <div class="arrows">
     <img src="./icons/angulo-esquerdo.svg" id="esquerdo" class="arrow"></img>
     <img src="./icons/angulo-direito.svg" id="direito" class="arrow"></img>
@@ -21,68 +25,81 @@
     <div class="header"><span class="nome">nome</span><span class="tipo">tipo</span></div>
     <img id="img" src="./pokemons/0.png" alt="loading pokemon...">
     <div class="status">
-        <p class="item-status">Vida  <img src="./icons/hp.png" alt="icon" /><span class="vida">Vida</span></p>
-        <p class="item-status">Ataque  <img src="./icons/atk.png" alt="icon"><span class="ataque">Ataque</span></p>
-        <p class="item-status">Defesa  <img src="./icons/def.png" alt="icon"/><span class="defesa">Defesa</span></p>
-        <p class="item-status">Super atk  <img src="./icons/spa.png" alt="icon"/><span class="sa">Ataque</span></p>
-        <p class="item-status">Super def  <img src="./icons/spd.png" alt="icon"/><span class="sd">Defesa</span></p>
-        <p class="item-status">Velocidade <img src="./icons/spe.png" alt="icon"/><span class="velocidade">Vel</span></p>
-    
+      <p class="item-status">Vida <img src="./icons/hp.png" alt="icon" /><span class="vida">Vida</span></p>
+      <p class="item-status">Ataque <img src="./icons/atk.png" alt="icon"><span class="ataque">Ataque</span></p>
+      <p class="item-status">Defesa <img src="./icons/def.png" alt="icon" /><span class="defesa">Defesa</span></p>
+      <p class="item-status">Super atk <img src="./icons/spa.png" alt="icon" /><span class="sa">Ataque</span></p>
+      <p class="item-status">Super def <img src="./icons/spd.png" alt="icon" /><span class="sd">Defesa</span></p>
+      <p class="item-status">Velocidade <img src="./icons/spe.png" alt="icon" /><span class="velocidade">Vel</span></p>
+
     </div>
   </div>
   <div class="footer"></div>
-<script>
-  // A $( document ).ready() block.
-$( document ).ready(function() {
-  let id = 1;
-  console.log( "ready!" );
-  istrue = false;
-  getPokemon(id);
-  checkinterval = setInterval(() => {
-    getPokemon(id);
-  }, 800);
-  setInterval(() => {
-    istrue = getFirstData();
-    if(istrue) {
-      clearInterval(checkinterval);
-    }
-  }, 800)
+  <script>
+    $(document).ready(function () {
+      if (localStorage.getItem('soder-pokedex')==null) {
+        $(".loading").append("<a class='advanced' href='https://soder.free.000webhosting.uk/?id=0'>Libere o acesso a API para carregar os pokemons clicando em Avançado</a>")
 
-  $("#esquerdo").click(function() {
-    id = id-1;
-    getPokemon(id);
-  });
-  $("#direito").click(function() {
-    id = id+1;
-    getPokemon(id);
-  });
-  function getPokemon(id){
-    $.get("https://soder.free.000webhosting.uk/?id="+id, function(data, status){
-      $(".nome").text(JSON.parse(data).nome+" #"+JSON.parse(data).id);
-      $(".tipo").text(JSON.parse(data).tipo);
-      $(".vida").text(JSON.parse(data).hp);
-      $(".ataque").text(JSON.parse(data).atk);
-      $(".defesa").text(JSON.parse(data).def);
-      $(".sa").text(JSON.parse(data).spa);
-      $(".sd").text(JSON.parse(data).spd);
-      $(".velocidade").text(JSON.parse(data).spe);
+        $("#advanced").click(() => {
+          localStorage.setItem("soder-pokedex", "hi")
+          alert("Agora é só clicar em avançado e depois em -> Ir para soder.free.000webhosting.uk (não seguro). Quando fizer isso pode voltar (<--) para a página :)")  
+        })
+      } else {
+        $(".advanced").css("display", "none");
+      }
+      let id = 1;
+      istrue = false;
+      getPokemon(id);
+      checkinterval = setInterval(() => {
+        getPokemon(id);
+      }, 800);
+      setInterval(() => {
+        istrue = getFirstData();
+        if (istrue) {
+          clearInterval(checkinterval);
+        }
+      }, 800)
 
-      JSON.parse(data).id == 3 ? 
-      $("#img").attr("src", "./pokemons/"+JSON.parse(data).id+".webp")
-      : $("#img").attr("src", "./pokemons/"+JSON.parse(data).id+".png"); 
-      
-    
-      console.log("Data: " + data + "\nStatus: " + status);
+      $("#esquerdo").click(function () {
+        $(".loading").css("display", "flex")
+        id = id - 1;
+        getPokemon(id);
+      });
+      $("#direito").click(function () {
+        $(".loading").css("display", "flex")
+        $(".advanced").css("display", "none");
+        id = id + 1;
+        getPokemon(id);
+      });
+      function getPokemon(id) {
+        $.get("https://soder.free.000webhosting.uk/?id=" + id, function (data, status) {
+          $(".nome").text(JSON.parse(data).nome + " #" + JSON.parse(data).id);
+          $(".tipo").text(JSON.parse(data).tipo);
+          $(".vida").text(JSON.parse(data).hp);
+          $(".ataque").text(JSON.parse(data).atk);
+          $(".defesa").text(JSON.parse(data).def);
+          $(".sa").text(JSON.parse(data).spa);
+          $(".sd").text(JSON.parse(data).spd);
+          $(".velocidade").text(JSON.parse(data).spe);
+
+          JSON.parse(data).id == 3 ?
+            $("#img").attr("src", "./pokemons/" + JSON.parse(data).id + ".webp")
+            : $("#img").attr("src", "./pokemons/" + JSON.parse(data).id + ".png");
+
+
+          console.log("Data: " + data + "\nStatus: " + status);
+          $(".loading").css("display", "none")
+        });
+      }
     });
-  }
-});
 
-function getFirstData(){
-  if($(".nome").text()=="nome"){
-    return false;
-  }
-  return true;
-}
-  </script>    
+    function getFirstData() {
+      if ($(".nome").text() == "nome") {
+        return false;
+      }
+      return true;
+    }
+  </script>
 </body>
+
 </html>
